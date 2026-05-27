@@ -35,7 +35,7 @@
         <a href="index.html#features" class="hide-sm">Features</a>
         <a href="index.html#faq" class="hide-sm">FAQ</a>
         <a href="support.html">Support</a>
-        <a href="index.html#download" class="btn">Get the app</a>
+        <span class="coming-soon-wrap"><a href="index.html#download" class="btn">Get the app</a><span class="coming-soon-badge">Coming Soon</span></span>
       </div>
     </div>
   </nav>
@@ -59,7 +59,10 @@
           <span class="eyebrow">App Store</span>
           <h3>Reviews & ratings</h3>
           <p>If Soledger is working for you, a short rating helps other runners find it. If it isn't, please email us first — we'd rather fix it than read about it.</p>
-          <div class="contact"><a href="#">Open in App Store →</a></div>
+          <div class="contact">
+            <span style="opacity:0.55; cursor:default">Open in App Store →</span>
+            <span class="coming-soon-badge" style="position:static; margin-left:8px; vertical-align:middle">Coming Soon</span>
+          </div>
         </div>
       </div>
 
@@ -73,18 +76,18 @@
         <p>Tap the <strong>+</strong> in the top right of the shoe list. Enter brand, model, purchase price, and expected lifetime in miles. If you're not sure, 500 mi is a reasonable default for road trainers, 300 mi for racing flats, and 800 mi for max-cushion shoes.</p>
 
         <h3>Assigning runs</h3>
-        <p>When Soledger sees a new run in Apple Health, it appears in the <em>Sync</em> tab with an <strong>Assign</strong> prompt. Tap to pick which pair you ran in. To bulk-assign, swipe-select multiple runs and pick one shoe.</p>
+        <p>When Soledger sees a new run in Apple Health, it appears in the <em>Sync</em> tab with an <strong>Assign</strong> prompt. Tap to pick which pair you ran in. To assign all unassigned runs to your active shoe at once, tap <strong>Apply All</strong> at the top of the Sync tab.</p>
 
         <h2 id="troubleshooting">Troubleshooting</h2>
 
         <h3>My runs aren't showing up</h3>
-        <p>Check that (1) the run is actually a <em>running</em> workout type in Apple Health (not generic &ldquo;Other&rdquo;), (2) Soledger has read access in <em>Settings → Privacy & Security → Health → Soledger</em>, and (3) you've pulled to refresh the Sync tab. If you're looking for older runs that pre-date when you installed Soledger, use the <em>Historical Probe</em> in Settings to pick a date range and search.</p>
+        <p>Check that (1) the run is actually a <em>running</em> workout type in Apple Health (not generic &ldquo;Other&rdquo;), (2) Soledger has read access in <em>Settings → Privacy &amp; Security → Health → Soledger</em>, and (3) you've tapped the <strong>Sync</strong> chip at the top of the Shoes tab to run a fresh sync. If you're looking for older runs, tap <strong>Search older runs</strong> on any shoe's detail screen to open the Historical Probe. Pick a date range and Soledger will search Apple Health for runs you haven't imported yet.</p>
 
         <h3>Cost per mile shows &mdash;</h3>
         <p>CPM is only computed once you've assigned at least one run to a shoe and entered its purchase price. If either is missing, the value will display as an em-dash.</p>
 
         <h3>I retired a shoe by accident</h3>
-        <p>Open the shoe, tap the menu, and choose <strong>Un-retire</strong>. The pair returns to your active list with its full history intact. Retiring a shoe never deletes data.</p>
+        <p>Open the <strong>History</strong> tab. Swipe left on the retired shoe and tap <strong>Restore</strong> — or tap the shoe to open its memorial and tap <strong>Restore to rotation</strong>. The pair comes back with its full mileage history intact. Retiring a shoe never deletes data.</p>
 
         <h3>The app crashes on launch</h3>
         <p>This is rare; if it happens, please email <a href="mailto:support@soledger.app">support@soledger.app</a> with your iPhone model and iOS version. A force-quit and re-open will usually get you running again while we look into it.</p>
