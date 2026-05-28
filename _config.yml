@@ -1,0 +1,11 @@
+title: Soledger
+description: A mileage log for runners
+url: "https://soledger.app"
+baseurl: ""
+
+exclude:
+  - CLAUDE.md
+  - README.md
+  - plan/
+  - Gemfile
+  - Gemfile.lock

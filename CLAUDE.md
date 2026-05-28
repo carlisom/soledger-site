@@ -4,25 +4,47 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-Static marketing site for **Soledger** — an iOS app that tracks running shoe mileage via Apple Health. No build tool, no JavaScript framework, no package manager. Just HTML and CSS.
+Static marketing site for **Soledger** — an iOS app that tracks running shoe mileage via Apple Health. Built with **Jekyll** so nav and footer are shared via includes. Deployed on GitHub Pages.
 
 ## Previewing locally
 
 ```bash
-open index.html          # macOS: opens in default browser
-python3 -m http.server   # optional: serve on localhost:8000 to test nav links
+bundle exec jekyll serve   # renders Liquid tags; visit http://localhost:4000
 ```
+
+Do not open `.html` files directly in a browser — Liquid tags won't render without Jekyll.
 
 ## File structure
 
-| File | Purpose |
-|------|---------|
+| File/Dir | Purpose |
+|----------|---------|
+| `_layouts/default.html` | Base layout — `<head>`, nav include, `{{ content }}`, footer include |
+| `_includes/nav.html` | Shared nav (uses `page.is_home` to switch between anchor and full-path links) |
+| `_includes/footer.html` | Shared footer (uses `page.is_home` and `page.contact_email`) |
 | `index.html` | Main landing page (hero, features, FAQ, CTA) |
 | `styles.css` | All styles — shared across every page |
 | `support.html` | Support/troubleshooting page |
 | `privacy.html` | Privacy policy |
 | `terms.html` | Terms of service |
 | `assets/app-icon.png` | App icon used in nav and `<link rel="icon">` |
+| `_config.yml` | Jekyll config — title, url, excludes (`CLAUDE.md`, `README.md`, `plan/`, `Gemfile`, `Gemfile.lock`) |
+| `Gemfile` | Pins `jekyll ~> 4.3` plus `webrick`, `csv`, `bigdecimal` |
+| `README.md` | Human-readable setup guide — excluded from Jekyll build |
+| `plan/` | Working docs excluded from build: `plan.md` (accuracy corrections), `go-live-checklist.md` (App Store launch steps), `screenshot.md` (screenshot guidance) |
+
+## Page front matter
+
+Each page declares its layout and metadata at the top:
+
+```yaml
+---
+layout: default
+title: "Page Title — Soledger"
+description: "Meta description for SEO."
+is_home: true          # only on index.html — controls anchor vs. full-path nav/footer links
+contact_email: "support@soledger.app"   # second email shown in footer Contact column
+---
+```
 
 ## Design system
 
@@ -48,11 +70,11 @@ The hero phone and the 3-column gallery currently show `.slot` placeholder divs.
   ```html
   <img src="assets/screenshots/home.png" alt="Soledger home screen" style="width:100%;height:100%;object-fit:cover" />
   ```
-- **Gallery**: Replace each `.shot > .slot` with an `<img>` in the same style. Recommended size: 1290×2796 portrait PNG (iPhone 15 Pro Max simulator).
+- **Gallery**: Replace each `.shot > .slot` with an `<img>` in the same style. Capture at native simulator resolution, portrait, no device frame. See `plan/screenshot.md` for the target simulator and recommended shots per slot.
 
-## App Store link
+## Coming-soon pattern
 
-Both `href="#"` App Store badge links in `index.html` (hero and final CTA) need the real App Store URL once the app is live.
+App Store badges and the "Get the app" nav button are currently wrapped in a `.coming-soon-wrap` / `.coming-soon-badge` overlay to mark the app as not yet live. When the app ships, follow `plan/go-live-checklist.md` to swap these out for real links across all four pages and remove the now-unused CSS.
 
 ## Responsive breakpoints
 
@@ -61,7 +83,7 @@ Both `href="#"` App Store badge links in `index.html` (hero and final CTA) need 
 
 ## Shared nav / footer pattern
 
-Every page duplicates the `<nav>` and `<footer>` blocks directly (no server-side includes or JS templating). When updating nav or footer copy, edit all four HTML files.
+Nav and footer live in `_includes/nav.html` and `_includes/footer.html`. Edit those files once — all pages pick up the change automatically via Jekyll's `{% include %}` tags.
 
 ## Legal pages
 
