@@ -4,3 +4,4 @@ _site/
 .bundle/
 vendor/
 plan/
+.DS_STORE
