@@ -42,7 +42,7 @@ layout: default
 title: "Page Title — Soledger"
 description: "Meta description for SEO."
 is_home: true          # only on index.html — controls anchor vs. full-path nav/footer links
-contact_email: "support@soledger.app"   # second email shown in footer Contact column
+contact_email: "soledger@pragmaticts.com"   # second email shown in footer Contact column
 ---
 ```
 
